@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # All django_imageboard apps
+    "boards.apps.BoardsConfig",
 ]
 
 MIDDLEWARE = [
