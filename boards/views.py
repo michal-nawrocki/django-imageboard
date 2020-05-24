@@ -1,7 +1,6 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import get_object_or_404, render
 
-from .models import Thread, Post
+from .models import Thread
 
 
 def index(request):
@@ -13,6 +12,6 @@ def index(request):
 
 
 def thread(request, post_id):
-    response = f"You're looking at thread with id:{post_id}"
-    return response
+    thread = get_object_or_404(Thread, pk=post_id)
+    return render(request, "boards/thread.html", {"thread": thread})
 

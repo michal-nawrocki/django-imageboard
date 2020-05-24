@@ -1,0 +1,7 @@
+<h1>{{ thread.topic }}</h1>
+<p>{{ thread.text }}</p>
+<ul>
+{% for post in thread.post_set.all %}
+    <li>{{ post.text }}</li>
+{% endfor %}
+</ul>
