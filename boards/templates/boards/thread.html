@@ -1,8 +1,21 @@
-<h1>{{ thread.topic }}</h1>
-<h2>#{{ thread.entry_id }}</h2>
-<p>{{ thread.text }}</p>
+<h1>#{{ thread.entry_id }}: {{ thread.topic }}</h1>
+<p>
+    {% if thread.file %}
+        <img src="{{thread.file.url}}" alt="{{thread.topic}}" width="500" height="500"><br>
+    {% endif %}
+    {{ thread.text }}
+</p>
 <ul>
 {% for post in thread.postentry_set.all %}
-    <li>#{{ post.entry_id }}: {{ post.text }}</li>
+    <li>
+        <div>
+            #{{ post.entry_id }}: {{ post.text }}
+        </div>
+        {% if post.file %}
+        <div>
+            <img src="{{post.file.url}}" alt="{{post.topic}}" width="500" height="500">
+        </div>
+        {% endif %}
+    </li>
 {% endfor %}
 </ul>

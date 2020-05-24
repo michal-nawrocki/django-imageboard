@@ -1,7 +1,16 @@
 {% if latest_threads %}
     <ul>
     {% for thread in latest_threads %}
-        <li><a href="{% url 'boards:thread' thread.entry_id %}">{{ thread.topic }}</a></li>
+        <li>
+            <div>
+                <a href="{% url 'boards:thread' thread.entry_id %}">
+                    #{{ thread.entry_id }}: {{ thread.topic }}<br>
+                    {% if thread.file %}
+                        <img src="{{thread.file.url}}" alt="{{thread.topic}}" width="500" height="500">
+                    {% endif %}
+                </a>
+            </div>
+        </li>
     {% endfor %}
     </ul>
 {% else %}
