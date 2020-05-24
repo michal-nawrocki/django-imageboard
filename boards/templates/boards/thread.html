@@ -1,7 +1,8 @@
 <h1>{{ thread.topic }}</h1>
+<h2>#{{ thread.entry_id }}</h2>
 <p>{{ thread.text }}</p>
 <ul>
-{% for post in thread.post_set.all %}
-    <li>{{ post.text }}</li>
+{% for post in thread.postentry_set.all %}
+    <li>#{{ post.entry_id }}: {{ post.text }}</li>
 {% endfor %}
 </ul>
