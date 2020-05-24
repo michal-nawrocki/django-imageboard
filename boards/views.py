@@ -5,10 +5,7 @@ from .models import ThreadEntry
 
 def index(request):
     latest_threads = ThreadEntry.objects.order_by("-creation_datetime")[:5]
-    context = {
-        "latest_threads": latest_threads,
-    }
-    return render(request, "boards/index.html", context)
+    return render(request, "boards/index.html", {"latest_threads": latest_threads})
 
 
 def thread(request, post_id):
