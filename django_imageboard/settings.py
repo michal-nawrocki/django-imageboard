@@ -25,7 +25,7 @@ SECRET_KEY = '^t$=lzs)m@y*m^wph9)afpt=*czl+88y35h4jdwl737#da@z1h'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["django-imageboard.herokuapp.com"]
 
 
 # Application definition
