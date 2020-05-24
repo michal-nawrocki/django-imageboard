@@ -1,8 +1,15 @@
 <h1>#{{ thread.entry_id }}: {{ thread.topic }}</h1>
 <p>
-    {% if thread.file %}
-        <img src="{{thread.file.url}}" alt="{{thread.topic}}" width="500" height="500"><br>
-    {% endif %}
+    <div>
+        {% if thread.file_extension == "img" %}
+            <img src="{{thread.file.url}}" alt="{{thread.topic}}" width="500" height="500">
+        {% elif thread.file_extension == "video" %}
+            <video width="320" height="240" controls>
+                <source src="{{ thread.file.url }}">
+            </video>
+        {% endif %}
+        <br>
+    </div>
     {{ thread.text }}
 </p>
 <ul>
@@ -11,11 +18,16 @@
         <div>
             #{{ post.entry_id }}: {{ post.text }}
         </div>
-        {% if post.file %}
         <div>
-            <img src="{{post.file.url}}" alt="{{post.topic}}" width="500" height="500">
+            {% if post.file_extension == "img" %}
+                <img src="{{post.file.url}}" alt="{{post.topic}}" width="500" height="500">
+            {% elif post.file_extension == "video" %}
+                <video width="320" height="240" controls>
+                    <source src="{{ post.file.url }}">
+                </video>
+            {% endif %}
+            <br>
         </div>
-        {% endif %}
     </li>
 {% endfor %}
 </ul>

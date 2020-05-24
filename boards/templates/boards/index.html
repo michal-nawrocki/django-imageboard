@@ -5,9 +5,16 @@
             <div>
                 <a href="{% url 'boards:thread' thread.entry_id %}">
                     #{{ thread.entry_id }}: {{ thread.topic }}<br>
-                    {% if thread.file %}
-                        <img src="{{thread.file.url}}" alt="{{thread.topic}}" width="500" height="500">
-                    {% endif %}
+                    <div>
+                        {% if thread.file_extension == "img" %}
+                            <img src="{{thread.file.url}}" alt="{{thread.topic}}" width="500" height="500">
+                        {% elif thread.file_extension == "video" %}
+                            <video width="320" height="240" controls>
+                                <source src="{{ thread.file.url }}">
+                            </video>
+                        {% endif %}
+                        <br>
+                    </div>
                 </a>
             </div>
         </li>

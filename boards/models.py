@@ -1,3 +1,4 @@
+import os
 import uuid
 from django.db import models
 
@@ -19,6 +20,15 @@ class Entry(models.Model):
 
     def __str__(self):
         return str(self.entry_id)
+
+    def file_extension(self):
+        name, extension = os.path.splitext(self.file.name)
+        if extension in [".jpg", ".gif", ".png"]:
+            return "img"
+        elif extension in [".webm", ".mp4"]:
+            return "video"
+        else:
+            return "other"
 
     class Meta:
         verbose_name = "Entry"
