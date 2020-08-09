@@ -1,5 +1,6 @@
 asgiref==3.2.7
 Django==3.0.7
+django-extra-fields==3.0.0
 djangorestframework==3.11.1
 pytz==2020.1
 sqlparse==0.3.1
